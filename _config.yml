@@ -1,0 +1,26 @@
+# Site Settings
+title: Anikesh Ramia
+school: Emma C. Smith Elementary School, Livermore
+grade: 5th Grade
+email: anikesh.ramia@example.com
+description: >-
+  Achievement portfolio and blog of Anikesh Ramia, a 5th grader at Emma C. Smith Elementary School in Livermore. Celebrating learning, projects, and achievements.
+bio: >-
+  I am an enthusiastic 5th grader who loves science, coding, playing sports, and exploring new ideas. Welcome to my achievements website where I document my learning journey, awards, and cool milestones!
+avatar: "https://images.unsplash.com/photo-1596495578065-6e07cf507432?w=300&auto=format&fit=crop&q=80"
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: /achievements/:title/
+
+# Default Front Matter
+defaults:
+  - scope:
+      path: "" # all files in the project
+    values:
+      layout: "default"
+  - scope:
+      path: "_posts"
+    values:
+      layout: "post"

@@ -1,526 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anikesh Ramia | Achievement Portfolio & Blog</title>
-    <meta name="description" content="Achievement portfolio and blog of Anikesh Ramia, a 5th grader at Emma C. Smith Elementary School in Livermore. Celebrating learning, projects, and achievements.">
-    <!-- Google Fonts: Outfit & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="light-mode">
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo" id="navLogo">
-                <span class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-                <span class="logo-text">Anikesh Ramia</span>
-            </a>
-            
-            <div class="nav-links" id="navLinks">
-                <a href="#home" class="nav-link active" data-target="home-section"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="#achievements" class="nav-link" data-target="achievements-section"><i class="fa-solid fa-trophy"></i> Achievements</a>
-                <a href="#about" class="nav-link" data-target="about-section"><i class="fa-solid fa-user"></i> About Me</a>
-                <a href="#admin" class="nav-link admin-btn" id="adminNavLink" data-target="admin-section"><i class="fa-solid fa-user-gear"></i> Dashboard</a>
+---
+layout: default
+---
+<!-- Hero Header -->
+<div class="hero-card">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+        <div class="hero-left">
+            <div class="profile-avatar-container">
+                <img id="profileAvatar" src="{{ site.avatar }}" alt="{{ site.title }} Profile Image" class="profile-avatar">
+                <span class="grade-badge" id="profileGradeBadge">{{ site.grade }}</span>
             </div>
-
-            <div class="nav-actions">
-                <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-                <button id="mobileMenuToggle" class="icon-btn mobile-only" aria-label="Toggle navigation menu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content Container -->
-    <main class="main-content">
-        
-        <!-- HOME SECTION -->
-        <section id="home-section" class="tab-content active">
-            <!-- Hero Header -->
-            <div class="hero-card">
-                <div class="hero-glow"></div>
-                <div class="hero-content">
-                    <div class="hero-left">
-                        <div class="profile-avatar-container">
-                            <img id="profileAvatar" src="https://images.unsplash.com/photo-1596495578065-6e07cf507432?w=300&auto=format&fit=crop&q=80" alt="Anikesh Ramia Profile Image" class="profile-avatar">
-                            <span class="grade-badge" id="profileGradeBadge">5th Grade</span>
-                        </div>
-                        <div class="hero-text">
-                            <span class="hero-sub">Welcome to my space!</span>
-                            <h1 id="profileName">Anikesh Ramia</h1>
-                            <p class="hero-school">
-                                <i class="fa-solid fa-school"></i> 
-                                <span id="profileSchool">Emma C. Smith Elementary School, Livermore</span>
-                            </p>
-                            <p class="hero-bio" id="profileBio">
-                                I am an enthusiastic 5th grader who loves science, coding, playing sports, and exploring new ideas. Welcome to my achievements website where I document my learning journey, awards, and cool milestones!
-                            </p>
-                            <div class="hero-actions">
-                                <a href="#achievements" class="btn btn-primary" onclick="switchTab('achievements-section')">
-                                    <i class="fa-solid fa-award"></i> View My Work
-                                </a>
-                                <button class="btn btn-secondary" id="heroAdminBtn">
-                                    <i class="fa-solid fa-pen-to-square"></i> Add/Edit Posts
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-stats">
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fa-solid fa-medal"></i></div>
-                            <div class="stat-val" id="statCount">0</div>
-                            <div class="stat-lbl">Achievements</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fa-solid fa-compass"></i></div>
-                            <div class="stat-val" id="statCategories">0</div>
-                            <div class="stat-lbl">Categories</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                            <div class="stat-val" id="statUpdated">Recently</div>
-                            <div class="stat-lbl">Last Updated</div>
-                        </div>
-                    </div>
+            <div class="hero-text">
+                <span class="hero-sub">Welcome to my space!</span>
+                <h1 id="profileName">{{ site.title }}</h1>
+                <p class="hero-school">
+                    <i class="fa-solid fa-school"></i> 
+                    <span id="profileSchool">{{ site.school }}</span>
+                </p>
+                <p class="hero-bio" id="profileBio">
+                    {{ site.bio }}
+                </p>
+                <div class="hero-actions">
+                    <a href="{{ '/achievements.html' | relative_url }}" class="btn btn-primary">
+                        <i class="fa-solid fa-award"></i> View My Achievements
+                    </a>
+                    <a href="{{ '/about.html' | relative_url }}" class="btn btn-secondary">
+                        <i class="fa-solid fa-user"></i> About Me
+                    </a>
                 </div>
             </div>
-
-            <!-- Recent Achievements Slider/Highlights -->
-            <div class="section-header">
-                <h2><i class="fa-solid fa-star text-gold"></i> Featured Achievements</h2>
-                <a href="#achievements" class="view-all-link" onclick="switchTab('achievements-section')">See All <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="hero-stats">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-medal"></i></div>
+                <div class="stat-val">{{ site.posts | size }}</div>
+                <div class="stat-lbl">Achievements</div>
             </div>
-            <div class="featured-grid" id="featuredGrid">
-                <!-- Injected dynamically by app.js -->
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-compass"></i></div>
+                <div class="stat-val">{{ site.posts | map: 'category' | uniq | size }}</div>
+                <div class="stat-lbl">Categories</div>
             </div>
-        </section>
-
-        <!-- ACHIEVEMENTS GRID SECTION -->
-        <section id="achievements-section" class="tab-content">
-            <div class="section-title-area">
-                <h1>My Achievements Log</h1>
-                <p>A compilation of my academic milestones, projects, sports achievements, and creative pursuits.</p>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <div class="stat-val">
+                    {% if site.posts.size > 0 %}
+                        {{ site.posts[0].date | date: "%b %d, %Y" }}
+                    {% else %}
+                        Recently
+                    {% endif %}
+                </div>
+                <div class="stat-lbl">Last Updated</div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Filters and Search Toolbar -->
-            <div class="toolbar-card">
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="achievementSearch" placeholder="Search achievements by title, details or keywords...">
-                    <button id="searchClearBtn" class="clear-btn hide"><i class="fa-solid fa-xmark"></i></button>
+<!-- Recent Achievements Slider/Highlights -->
+<div class="section-header">
+    <h2><i class="fa-solid fa-star text-gold"></i> Featured Achievements</h2>
+    <a href="{{ '/achievements.html' | relative_url }}" class="view-all-link">See All <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<div class="featured-grid">
+    {% if site.posts.size > 0 %}
+        {% for post in site.posts limit:3 %}
+            <article class="achievement-card">
+                <div class="card-img-wrapper" onclick="location.href='{{ post.url | relative_url }}';" style="cursor: pointer;">
+                    <img class="card-img" src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+                    <span class="badge badge-primary card-category-badge">{{ post.category }}</span>
                 </div>
                 
-                <div class="filter-categories" id="filterContainer">
-                    <button class="filter-chip active" data-category="all">All</button>
-                    <!-- Injected dynamically based on existing posts categories -->
-                </div>
-            </div>
-
-            <!-- Edit Mode Indicator (Visible when Admin Mode is unlocked) -->
-            <div id="editModeIndicator" class="info-alert hide">
-                <div class="alert-content">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <span><strong>Editor Mode Active:</strong> You can click the Edit (<i class="fa-solid fa-pencil"></i>) or Delete (<i class="fa-solid fa-trash-can"></i>) buttons on any card to update it.</span>
-                </div>
-                <button class="btn btn-sm btn-dark" id="exitEditModeBtn">Exit Editor Mode</button>
-            </div>
-
-            <!-- Achievements Grid -->
-            <div class="achievements-grid" id="achievementsGrid">
-                <!-- Injected dynamically by app.js -->
-            </div>
-
-            <!-- Empty State -->
-            <div class="empty-state hide" id="emptyState">
-                <div class="empty-icon"><i class="fa-regular fa-folder-open"></i></div>
-                <h3>No achievements found</h3>
-                <p>Try refining your search terms or filter selections. If you are in editor mode, add a new achievement!</p>
-                <button class="btn btn-primary" id="emptyStateAddBtn"><i class="fa-solid fa-plus"></i> Add New Achievement</button>
-            </div>
-        </section>
-
-        <!-- ABOUT ME SECTION -->
-        <section id="about-section" class="tab-content">
-            <div class="about-grid">
-                <div class="about-card profile-bio-card">
-                    <h2><i class="fa-solid fa-user-graduate"></i> My Story</h2>
-                    <p>My name is <strong>Anikesh Ramia</strong>. I am currently in the <strong>5th Grade</strong> at <strong>Emma C. Smith Elementary School</strong> in Livermore, California.</p>
-                    <p>I believe in working hard, learning something new every day, and sharing what I discover. This site is my personal diary of milestones, showing my growth over time.</p>
+                <div class="card-content">
+                    <span class="card-date"><i class="fa-regular fa-calendar"></i> {{ post.date | date: "%B %d, %Y" }}</span>
+                    <h3 class="card-title" onclick="location.href='{{ post.url | relative_url }}';">{{ post.title }}</h3>
+                    <p class="card-summary">{{ post.summary }}</p>
                     
-                    <div class="school-highlight">
-                        <div class="school-logo-mock"><i class="fa-solid fa-school-flag"></i></div>
-                        <div class="school-info">
-                            <h4>Emma C. Smith Elementary</h4>
-                            <p>Home of the Leopards • Livermore, CA</p>
-                        </div>
+                    <div class="card-footer">
+                        <a href="{{ post.url | relative_url }}" class="read-more-btn">Read Full Story <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
-
-                <div class="about-card school-life-card">
-                    <h2><i class="fa-solid fa-compass"></i> My Hobbies & Interests</h2>
-                    <ul class="interests-list">
-                        <li>
-                            <span class="interest-icon"><i class="fa-solid fa-microscope"></i></span>
-                            <div>
-                                <strong>Science & Math</strong>
-                                <p>I love doing hands-on experiments and solving complex math riddles.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="interest-icon"><i class="fa-solid fa-laptop-code"></i></span>
-                            <div>
-                                <strong>Coding</strong>
-                                <p>Learning blocks-based and text-based coding to build interactive stories and games.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="interest-icon"><i class="fa-solid fa-basketball"></i></span>
-                            <div>
-                                <strong>Sports</strong>
-                                <p>Active in soccer and basketball, focusing on teamwork and athletic growth.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="interest-icon"><i class="fa-solid fa-palette"></i></span>
-                            <div>
-                                <strong>Arts & Building</strong>
-                                <p>Creating LEGO structures, drawing, and designing cardboard model kits.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Future Goals Panel -->
-            <div class="goals-card mt-30">
-                <h2><i class="fa-solid fa-bullseye text-red"></i> My Goals for this Year</h2>
-                <div class="goals-grid">
-                    <div class="goal-item">
-                        <div class="goal-number">01</div>
-                        <h3>Science Fair</h3>
-                        <p>Design a science project exploring renewable energy sources.</p>
-                    </div>
-                    <div class="goal-item">
-                        <div class="goal-number">02</div>
-                        <h3>Reading Marathon</h3>
-                        <p>Complete my challenge of reading 30 books before the school year ends.</p>
-                    </div>
-                    <div class="goal-item">
-                        <div class="goal-number">03</div>
-                        <h3>Code a Website</h3>
-                        <p>Understand how HTML, CSS, and Javascript work (just like this site!).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DASHBOARD (ADMIN) SECTION -->
-        <section id="admin-section" class="tab-content">
-            <div class="section-title-area">
-                <h1>Creator Dashboard</h1>
-                <p>Welcome to your personal control panel, Anikesh! Here you can post new achievements, edit old ones to refine them, customize your profile, and back up your data.</p>
-            </div>
-
-            <!-- Login Overlay (Lock Screen) -->
-            <div id="adminLockScreen" class="lock-screen-card">
-                <div class="lock-icon"><i class="fa-solid fa-lock"></i></div>
-                <h2>Unlock Dashboard</h2>
-                <p>Enter your editor passkey to make updates to the website. (Default PIN: <strong>1234</strong>)</p>
-                <div class="pin-input-group">
-                    <input type="password" id="adminPinInput" maxlength="6" placeholder="••••" autocomplete="current-password">
-                    <button class="btn btn-primary" id="adminUnlockBtn">Unlock <i class="fa-solid fa-key"></i></button>
-                </div>
-                <p id="lockErrorMsg" class="error-text hide">Incorrect PIN. Please try again.</p>
-            </div>
-
-            <!-- Admin Workspace (Visible when unlocked) -->
-            <div id="adminWorkspace" class="admin-workspace-grid hide">
-                <!-- Sidebar Tools -->
-                <div class="admin-sidebar">
-                    <div class="card admin-menu-card">
-                        <h3>Dashboard Controls</h3>
-                        <div class="admin-menu-buttons">
-                            <button class="sidebar-menu-btn active" id="menuBtnNewPost"><i class="fa-solid fa-file-pen"></i> Add/Edit Achievement</button>
-                            <button class="sidebar-menu-btn" id="menuBtnProfile"><i class="fa-solid fa-user-pen"></i> Edit Profile Info</button>
-                            <button class="sidebar-menu-btn" id="menuBtnBackup"><i class="fa-solid fa-database"></i> Backup & Restore</button>
-                        </div>
-                        <hr class="menu-divider">
-                        <div class="status-indicator">
-                            <span class="dot pulse green"></span>
-                            <span>Editor Mode Connected</span>
-                        </div>
-                        <button class="btn btn-outline btn-block btn-sm mt-15" id="adminLockBtn"><i class="fa-solid fa-lock"></i> Lock Dashboard</button>
-                    </div>
-
-                    <div class="card posts-summary-card">
-                        <h3>Quick Stats</h3>
-                        <div class="summary-stat-row">
-                            <span>Total Posts:</span>
-                            <strong id="summaryTotalPosts">0</strong>
-                        </div>
-                        <div class="summary-stat-row">
-                            <span>Categories:</span>
-                            <strong id="summaryCategories">0</strong>
-                        </div>
-                        <div class="summary-stat-row">
-                            <span>Backup Status:</span>
-                            <span class="badge badge-success">Saved Locally</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Admin Main Content Panel -->
-                <div class="admin-main-panel">
-                    
-                    <!-- PANEL 1: Add/Edit Achievement -->
-                    <div id="panelNewPost" class="admin-panel-content active">
-                        <div class="card form-card">
-                            <h2 id="formTitle">Create New Achievement Post</h2>
-                            <p class="form-subtext">Document a new achievement, school award, sport win, or learning project. You can come back and edit this text anytime to refine it.</p>
-                            
-                            <form id="achievementForm" onsubmit="return false;">
-                                <input type="hidden" id="editPostId" value="">
-                                
-                                <div class="form-row">
-                                    <div class="form-group col-8">
-                                        <label for="postTitle">Achievement Title <span class="required">*</span></label>
-                                        <input type="text" id="postTitle" required placeholder="e.g., 1st Place in Livermore School Science Fair">
-                                    </div>
-                                    <div class="form-group col-4">
-                                        <label for="postDate">Date Achieved <span class="required">*</span></label>
-                                        <input type="date" id="postDate" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-6">
-                                        <label for="postCategory">Category <span class="required">*</span></label>
-                                        <select id="postCategory" required>
-                                            <option value="">-- Select Category --</option>
-                                            <option value="Academics">Academics</option>
-                                            <option value="Science & Tech">Science & Tech</option>
-                                            <option value="Sports">Sports</option>
-                                            <option value="Arts & Hobbies">Arts & Hobbies</option>
-                                            <option value="Custom">Create Custom Category...</option>
-                                        </select>
-                                        <input type="text" id="customCategoryInput" class="hide mt-10" placeholder="Type custom category name...">
-                                    </div>
-                                    <div class="form-group col-6">
-                                        <label for="postImage">Featured Image</label>
-                                        <div class="image-upload-wrapper">
-                                            <input type="file" id="postImageFile" accept="image/*" class="hide">
-                                            <button type="button" class="btn btn-outline btn-sm" id="uploadImageBtn">
-                                                <i class="fa-solid fa-cloud-arrow-up"></i> Upload Image File
-                                            </button>
-                                            <span class="upload-or">or</span>
-                                            <input type="url" id="postImageUrl" placeholder="Paste Image URL directly...">
-                                        </div>
-                                        <p class="field-hint">Uploading small files (under 1MB) works best for LocalStorage saving.</p>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="postSummary">Short Summary <span class="required">*</span></label>
-                                    <input type="text" id="postSummary" required placeholder="A brief one-sentence summary of this achievement shown on the cards..." maxlength="150">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="postContent">Full Details / Story <span class="required">*</span></label>
-                                    <div class="editor-toolbar">
-                                        <button type="button" class="toolbar-tool" onclick="insertFormat('**', '**')" title="Bold"><i class="fa-solid fa-bold"></i></button>
-                                        <button type="button" class="toolbar-tool" onclick="insertFormat('*', '*')" title="Italic"><i class="fa-solid fa-italic"></i></button>
-                                        <button type="button" class="toolbar-tool" onclick="insertFormat('\n- ', '')" title="Bullet List"><i class="fa-solid fa-list-ul"></i></button>
-                                        <button type="button" class="toolbar-tool" onclick="insertFormat('\n1. ', '')" title="Numbered List"><i class="fa-solid fa-list-ol"></i></button>
-                                        <span class="toolbar-divider"></span>
-                                        <button type="button" class="toolbar-tool" id="editorPreviewToggle" title="Toggle Preview"><i class="fa-solid fa-eye"></i> Preview Mode</button>
-                                    </div>
-                                    
-                                    <div class="editor-container">
-                                        <textarea id="postContent" required placeholder="Write the full story here! Describe what you did, what you learned, and how you achieved it. You can format this using markdown rules or the buttons above."></textarea>
-                                        <div id="postContentPreview" class="content-preview markdown-body hide">
-                                            <!-- Preview rendered dynamically -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Image Preview Container -->
-                                <div id="formImagePreviewContainer" class="form-image-preview hide">
-                                    <span>Selected Image Preview:</span>
-                                    <div class="preview-img-wrapper">
-                                        <img id="formImagePreview" src="" alt="Post image preview">
-                                        <button type="button" id="removeFormImageBtn" class="remove-btn"><i class="fa-solid fa-trash-can"></i> Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="form-actions mt-20">
-                                    <button type="submit" class="btn btn-primary" id="savePostBtn"><i class="fa-solid fa-save"></i> Publish Achievement</button>
-                                    <button type="button" class="btn btn-secondary hide" id="cancelEditBtn"><i class="fa-solid fa-xmark"></i> Cancel Edit</button>
-                                    <button type="reset" class="btn btn-outline" id="resetFormBtn">Clear Form</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- PANEL 2: Edit Profile Info -->
-                    <div id="panelProfile" class="admin-panel-content">
-                        <div class="card form-card">
-                            <h2>Edit Profile Information</h2>
-                            <p class="form-subtext">Customize the details that visitors see in the header and about section of your website.</p>
-                            
-                            <form id="profileForm" onsubmit="return false;">
-                                <div class="form-row">
-                                    <div class="form-group col-6">
-                                        <label for="editProfileName">Your Name <span class="required">*</span></label>
-                                        <input type="text" id="editProfileName" required placeholder="e.g., Anikesh Ramia">
-                                    </div>
-                                    <div class="form-group col-6">
-                                        <label for="editProfileGrade">Grade / Class <span class="required">*</span></label>
-                                        <input type="text" id="editProfileGrade" required placeholder="e.g., 5th Grade">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="editProfileSchool">School Name <span class="required">*</span></label>
-                                    <input type="text" id="editProfileSchool" required placeholder="e.g., Emma C. Smith Elementary School, Livermore">
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-6">
-                                        <label for="editProfileAvatar">Profile Avatar URL</label>
-                                        <input type="url" id="editProfileAvatar" placeholder="Paste an Unsplash image URL or image URL...">
-                                    </div>
-                                    <div class="form-group col-6">
-                                        <label for="editProfileAvatarFile">Upload Profile Picture</label>
-                                        <div class="image-upload-wrapper">
-                                            <input type="file" id="editProfileAvatarFile" accept="image/*" class="hide">
-                                            <button type="button" class="btn btn-outline btn-sm" id="uploadAvatarBtn">
-                                                <i class="fa-solid fa-cloud-arrow-up"></i> Upload Photo
-                                            </button>
-                                            <span class="field-hint">Upload small JPG/PNG</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="editProfileBio">Short Bio (Shown on Home Page) <span class="required">*</span></label>
-                                    <textarea id="editProfileBio" required rows="3" placeholder="Tell visitors a bit about yourself, what school you go to, what grade you are in, and what your interests are..."></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="editPasscode">Update Passcode/PIN (Numbers Only)</label>
-                                    <input type="password" id="editPasscode" maxlength="6" placeholder="Keep empty to leave as-is (default: 1234)">
-                                    <p class="field-hint">Change the numeric passkey used to unlock this dashboard.</p>
-                                </div>
-
-                                <div class="form-actions mt-20">
-                                    <button type="submit" class="btn btn-primary" id="saveProfileBtn"><i class="fa-solid fa-floppy-disk"></i> Save Profile Details</button>
-                                    <button type="button" class="btn btn-outline" id="resetProfileFormBtn">Reset to Current Settings</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- PANEL 3: Backup & Restore -->
-                    <div id="panelBackup" class="admin-panel-content">
-                        <div class="card info-card">
-                            <h2>Backup & Restore Data</h2>
-                            <p>Since your achievement posts are saved directly inside your local web browser, cleaning your browser history or switching computers might remove your posts. To keep your work safe, you can export all your work as a single backup file and restore it later!</p>
-                            
-                            <div class="backup-actions-grid mt-20">
-                                <div class="backup-column">
-                                    <h3><i class="fa-solid fa-download text-indigo"></i> Backup Your Work</h3>
-                                    <p>Download a file containing all your posts and profile configuration. Save this file on your computer or Google Drive.</p>
-                                    <button class="btn btn-primary btn-block mt-15" id="exportDataBtn">
-                                        <i class="fa-solid fa-file-export"></i> Export achievements.json
-                                    </button>
-                                </div>
-
-                                <div class="backup-divider"></div>
-
-                                <div class="backup-column">
-                                    <h3><i class="fa-solid fa-upload text-violet"></i> Restore from Backup</h3>
-                                    <p>Upload a previously exported <code>achievements.json</code> file to restore your posts and configuration.</p>
-                                    <div class="file-restore-wrapper mt-15">
-                                        <input type="file" id="importFile" accept=".json" class="hide">
-                                        <button class="btn btn-outline btn-block" id="triggerImportBtn">
-                                            <i class="fa-solid fa-file-import"></i> Select achievements.json File
-                                        </button>
-                                    </div>
-                                    <p class="field-hint mt-5">Note: This will overwrite any current achievements shown on this browser.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <p>&copy; 2026 Anikesh Ramia. All rights reserved.</p>
-                <p class="footer-subtitle">5th Grade Student • Emma C. Smith Elementary School, Livermore</p>
-            </div>
-            <div class="footer-right">
-                <p>Powered by local data persistence. Refine posts over time.</p>
-                <div class="footer-links">
-                    <a href="#home" onclick="switchTab('home-section')">Home</a>
-                    <a href="#achievements" onclick="switchTab('achievements-section')">Achievements</a>
-                    <a href="#about" onclick="switchTab('about-section')">About</a>
-                    <a href="#admin" onclick="switchTab('admin-section')">Dashboard</a>
-                </div>
-            </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <div class="empty-state" style="grid-column: 1/-1; padding: 2rem;">
+            <p>No achievements documented yet. Add markdown posts in the <code>_posts</code> directory to populate them!</p>
         </div>
-    </footer>
-
-    <!-- ACHIEVEMENT POST DETAIL MODAL -->
-    <div id="achievementModal" class="modal-overlay">
-        <div class="modal-card">
-            <div class="modal-header">
-                <div class="modal-badge-row">
-                    <span id="modalCategory" class="badge">Category</span>
-                    <span id="modalDate" class="modal-date"><i class="fa-regular fa-calendar"></i> Date</span>
-                </div>
-                <button class="modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
-            </div>
-            
-            <div class="modal-scroll-body">
-                <h1 id="modalTitle">Achievement Title</h1>
-                <div class="modal-image-wrapper">
-                    <img id="modalImage" src="" alt="Achievement graphic">
-                </div>
-                <div id="modalContent" class="modal-content-text markdown-body">
-                    <!-- Dynamic text will go here -->
-                </div>
-            </div>
-            
-            <div class="modal-footer" id="modalFooterActions">
-                <!-- If unlocked, edit/delete buttons will appear here too -->
-                <button class="btn btn-outline" id="modalCloseBtn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Notification Toast -->
-    <div id="toast" class="toast hide">
-        <span id="toastIcon"><i class="fa-solid fa-circle-check"></i></span>
-        <span id="toastMessage">Success message goes here</span>
-    </div>
-
-    <script src="app.js"></script>
-</body>
-</html>
+    {% endif %}
+</div>
